@@ -1,16 +1,123 @@
+using System;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+
+public enum CardStatus
+{
+    show_back = 0,
+    show_front,
+    rotating_to_back,
+    rotating_to_front
+}
 
 public class Card : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private CardStatus status;
+
+    [SerializeField] private float turnTargetTime;
+
+    private SpriteRenderer backRenderer;
+    private SpriteRenderer frontRenderer;
+
+    private float turnTimer;
+
+    private Quaternion startRotation;
+    private Quaternion targetRotation;
+
+    private void Awake()
     {
-        
+        status = CardStatus.show_back;
+        GetFrontAndBackSpriteRenderers();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (status == CardStatus.rotating_to_front || status == CardStatus.rotating_to_back)
+        {
+            turnTimer += Time.deltaTime;
+            float percentage = turnTimer / turnTargetTime;
+
+            // rotate card
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, percentage);
+            
+            if (percentage >= 1f)
+            {
+                // change state when done rotating
+                switch (status)
+                {
+                    case CardStatus.rotating_to_front:
+                        status = CardStatus.show_front;
+                        break;
+                    case CardStatus.rotating_to_back:
+                        status = CardStatus.show_back;
+                        break;
+                }
+            }
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if (status == CardStatus.show_back)
+        {
+            TurnToFront();
+        } 
+        else if (status == CardStatus.show_front) 
+        { 
+            TurnToBack(); 
+        }
+    }
+
+    public void TurnToFront()
+    {
+        status = CardStatus.rotating_to_front;
+        turnTimer = 0f;
+        startRotation = transform.rotation;
+        targetRotation = Quaternion.Euler(0,180,0);
+    }
+
+    public void TurnToBack()
+    {
+        status = CardStatus.rotating_to_back;
+        turnTimer = 0f;
+        startRotation = transform.rotation;
+        targetRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void GetFrontAndBackSpriteRenderers()
+    {
+        // get components from children
+        foreach (Transform t in transform)
+        {
+            switch (t.name)
+            {
+                case "Front":
+                    frontRenderer = t.GetComponent<SpriteRenderer>();
+                    break;
+                case "Back":
+                    backRenderer = t.GetComponent<SpriteRenderer>();
+                    break;
+            }
+        }
+    }
+    
+
+    // setters
+
+    public void SetFront(Sprite sprite)
+    {
+        if (frontRenderer != null)
+        {
+            frontRenderer.sprite = sprite;
+        }
+    }
+
+    public void SetBack(Sprite sprite)
+    {
+        if (backRenderer != null)
+        {
+            backRenderer.sprite = sprite;
+        }
     }
 }

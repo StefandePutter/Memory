@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1d87ccf1ed7e44abd5455253aa18c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: 0
+  turnTargetTime: 0.3
 --- !u!1 &9105387071531494326
 GameObject:
   m_ObjectHideFlags: 0
