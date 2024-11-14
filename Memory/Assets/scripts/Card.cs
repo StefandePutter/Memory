@@ -120,4 +120,24 @@ public class Card : MonoBehaviour
             backRenderer.sprite = sprite;
         }
     }
+
+    // getters
+
+    public Vector2 GetFrontSize()
+    {
+        if (frontRenderer == null)
+        {
+            Debug.LogError("There is no frontRenderer found.");
+        }
+        return frontRenderer.bounds.size;
+    }
+
+    public Vector2 GetBackSize()
+    {
+        if (backRenderer == null)
+        {
+            Debug.LogError("There is no backRenderer found.");
+        }
+        return backRenderer.bounds.size;
+    }
 }

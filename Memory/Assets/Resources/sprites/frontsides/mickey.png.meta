@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5f72772bfe26c5d41a2a1eaa4beda2fc
+guid: 85c0f9eb66d2cec47bef5fb081abc7f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4158038485906246336
-    second: knabbel_babbel_0
+      213: -2733037550769050676
+    second: mickey_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knabbel_babbel_0
+      name: mickey_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ca48d209f154b930800000000000000
-      internalID: 4158038485906246336
+      spriteID: ccb6b9ce3dc421ad0800000000000000
+      internalID: -2733037550769050676
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mickey_0: -2733037550769050676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

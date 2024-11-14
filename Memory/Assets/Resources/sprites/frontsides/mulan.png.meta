@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c741c40de4cad04418ad545020f99045
+guid: b1aa70c0278441a41b04eb9e0cf86b56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5655868422885500409
-    second: fall_back_0
+      213: 2842244146414950012
+    second: mulan_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fall_back_0
+      name: mulan_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70a9f8da2a15281b0800000000000000
-      internalID: -5655868422885500409
+      spriteID: c761ff70efda17720800000000000000
+      internalID: 2842244146414950012
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mulan_0: 2842244146414950012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

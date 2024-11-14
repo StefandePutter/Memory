@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b1aa70c0278441a41b04eb9e0cf86b56
+guid: 5f72772bfe26c5d41a2a1eaa4beda2fc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2842244146414950012
-    second: mulan_0
+      213: 4158038485906246336
+    second: knabbel_babbel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mulan_0
+      name: knabbel_babbel_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c761ff70efda17720800000000000000
-      internalID: 2842244146414950012
+      spriteID: 0ca48d209f154b930800000000000000
+      internalID: 4158038485906246336
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      knabbel_babbel_0: 4158038485906246336
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

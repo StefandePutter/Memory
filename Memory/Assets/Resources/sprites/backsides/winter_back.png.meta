@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      winter_back_0: 3584720786872230863
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

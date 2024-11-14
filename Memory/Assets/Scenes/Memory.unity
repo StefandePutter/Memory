@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &57280540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57280541}
+  m_Layer: 0
+  m_Name: fieldAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57280541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57280540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +256,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -349,6 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764968734}
+  - component: {fileID: 1764968735}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -371,6 +403,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764968735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764968733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43539a2a5d201a4a894cd1914810b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rows: 3
+  columns: 4
+  totalPairs: 0
+  frontsidesFolder: Sprites/Frontsides/
+  backsidesFolder: Sprites/Backsides/
+  frontSprites: []
+  backSprites: []
+  selectedBackSprite: {fileID: 0}
+  selectedFrontSprites: []
+  cardPrefab: {fileID: 5449573523452633069, guid: b1a8eb354f135fc46821f0eaca4eb68e, type: 3}
+  fieldAnchor: {fileID: 57280541}
+  offsetX: 0.5
+  offsetY: 0.5
 --- !u!1001 &1982510016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -423,6 +480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 5449573523452633069, guid: b1a8eb354f135fc46821f0eaca4eb68e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -436,3 +497,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1982510016}
   - {fileID: 1764968734}
+  - {fileID: 57280541}

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9a1b89fa560e7a94886af6cdbed56ec3
+guid: e61f1e3980fc4f340bafc2ba6ff61de6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8007518808366505585
-    second: pluto_0
+      213: -269740533352060140
+    second: goofy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pluto_0
+      name: goofy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f812e07c1149fd090800000000000000
-      internalID: -8007518808366505585
+      spriteID: 41ba6000a60b14cf0800000000000000
+      internalID: -269740533352060140
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      goofy_0: -269740533352060140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

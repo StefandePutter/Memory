@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85c0f9eb66d2cec47bef5fb081abc7f7
+guid: 620a26d29edc12b4384d54c90266db20
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2733037550769050676
-    second: mickey_0
+      213: 1498630607766320501
+    second: snow_white_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mickey_0
+      name: snow_white_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ccb6b9ce3dc421ad0800000000000000
-      internalID: -2733037550769050676
+      spriteID: 575707109943cc410800000000000000
+      internalID: 1498630607766320501
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      snow_white_0: 1498630607766320501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
