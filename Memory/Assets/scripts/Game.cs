@@ -1,5 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+
+public enum GameStatus
+{
+    waiting_on_first_card = 0,
+    waiting_on_second_card,
+    match_found,
+    no_match_found
+}
 
 public class Game : MonoBehaviour
 {
@@ -28,15 +37,31 @@ public class Game : MonoBehaviour
     [SerializeField] private float offsetX;
     [SerializeField] private float offsetY;
 
+    private GameStatus status;
+
+    [SerializeField] private GameObject[] selectedCards;
+
+    private float timeoutTimer;
+
+    [SerializeField] private float timeoutTarget;
+
+    private int foundPairs;
+
     private void Start()
     {
         MakeCards();
         DistributeCards();
+
+        selectedCards = new GameObject[2];
+        status = GameStatus.waiting_on_first_card;
     }
 
     private void Update()
     {
-        
+        if (status == GameStatus.match_found || status == GameStatus.no_match_found)
+        {
+            RotateBackOrRemovePair();
+        }
     }
 
     private void MakeCards()
@@ -169,5 +194,93 @@ public class Game : MonoBehaviour
                 placedCards[x,y].transform.position = new Vector3 ( xPos, yPos, 0f );
             }
         }
+    }
+
+    public void SelectCard(GameObject card)
+    {
+        if ( status == GameStatus.waiting_on_first_card )
+        {
+            selectedCards[0] = card;
+
+            status = GameStatus.waiting_on_second_card;
+        }
+        else if (status == GameStatus.waiting_on_second_card)
+        {
+            selectedCards[1] = card;
+
+            CheckForMatchingPair();
+        }
+    }
+
+    private void CheckForMatchingPair()
+    {
+        timeoutTimer = 0f;
+
+        if (selectedCards[0].name == selectedCards[1].name)
+        {
+            status = GameStatus.match_found;
+        } else
+        {
+            status = GameStatus.no_match_found;
+        }
+    }
+
+    private void RotateBackOrRemovePair()
+    {
+        timeoutTimer += Time.deltaTime;
+
+        if (timeoutTimer >= timeoutTarget)
+        {
+            if (status == GameStatus.match_found)
+            {
+                selectedCards[0].SetActive(false);
+                selectedCards[1].SetActive(false);
+
+                foundPairs += 1;
+
+                if (foundPairs == selectedFrontSprites.Count)
+                {
+                    foundPairs = 0;
+                    Restart();
+                }
+            } 
+            else if (status == GameStatus.no_match_found)
+            {
+                selectedCards[0].GetComponent<Card>().TurnToBack();
+                selectedCards[1].GetComponent<Card>().TurnToBack();
+            }
+
+            selectedCards[0] = null;
+            selectedCards[1] = null;
+
+            status = GameStatus.waiting_on_first_card;
+        }
+    }
+
+    public bool AllowedToSelectCard(Card card)
+    {
+        if (selectedCards[0] == null)
+        {
+            return true;
+        }
+
+        if (selectedCards[1] == null)
+        {
+            if (selectedCards[0] != card.gameObject)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void Restart()
+    {
+        MakeCards();
+        DistributeCards();
+
+        selectedCards = new GameObject[2];
+        status = GameStatus.waiting_on_first_card;
     }
 }

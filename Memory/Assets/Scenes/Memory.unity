@@ -428,6 +428,8 @@ MonoBehaviour:
   fieldAnchor: {fileID: 57280541}
   offsetX: 0.5
   offsetY: 0.5
+  selectedCards: []
+  timeoutTarget: 0.8
 --- !u!1001 &1982510016
 PrefabInstance:
   m_ObjectHideFlags: 0

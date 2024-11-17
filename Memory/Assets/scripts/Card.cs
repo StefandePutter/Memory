@@ -25,10 +25,14 @@ public class Card : MonoBehaviour
     private Quaternion startRotation;
     private Quaternion targetRotation;
 
+    [SerializeField] private Game game;
+
     private void Awake()
     {
         status = CardStatus.show_back;
         GetFrontAndBackSpriteRenderers();
+
+        game = FindAnyObjectByType<Game>();
     }
 
     private void Update()
@@ -59,13 +63,17 @@ public class Card : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (status == CardStatus.show_back)
+        if (game.AllowedToSelectCard(this) == true)
         {
-            TurnToFront();
-        } 
-        else if (status == CardStatus.show_front) 
-        { 
-            TurnToBack(); 
+            if (status == CardStatus.show_back)
+            {
+                game.SelectCard(gameObject);
+                TurnToFront();
+            }
+            else if (status == CardStatus.show_front)
+            {
+                TurnToBack();
+            }
         }
     }
 
