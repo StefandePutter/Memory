@@ -2,13 +2,16 @@ using System;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using UnityEngine.UIElements;
 
 public enum CardStatus
 {
     show_back = 0,
     show_front,
     rotating_to_back,
-    rotating_to_front
+    rotating_to_front,
+    found
 }
 
 public class Card : MonoBehaviour
@@ -17,15 +20,19 @@ public class Card : MonoBehaviour
 
     [SerializeField] private float turnTargetTime;
 
+    private Vector3 deckLocation = new Vector3(0,-15,0);
+
     private SpriteRenderer backRenderer;
     private SpriteRenderer frontRenderer;
 
     private float turnTimer;
 
+    private float counter;
+
     private Quaternion startRotation;
     private Quaternion targetRotation;
 
-    [SerializeField] private Game game;
+    private Game game;
 
     private void Awake()
     {
@@ -59,6 +66,11 @@ public class Card : MonoBehaviour
                 }
             }
         }
+        if (status == CardStatus.found)
+        {
+            counter += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, deckLocation, counter / 1f);
+        }
     }
 
     private void OnMouseUp()
@@ -91,6 +103,12 @@ public class Card : MonoBehaviour
         turnTimer = 0f;
         startRotation = transform.rotation;
         targetRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void CardFound()
+    {
+        status = CardStatus.found;
+
     }
 
     private void GetFrontAndBackSpriteRenderers()

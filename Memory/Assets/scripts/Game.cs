@@ -47,6 +47,8 @@ public class Game : MonoBehaviour
 
     private int foundPairs;
 
+    private GameObject parent;
+
     private void Start()
     {
         MakeCards();
@@ -136,7 +138,7 @@ public class Game : MonoBehaviour
         stackOfCards = new Stack<GameObject>();
 
         // Make a empty GameObject where we can lay cards under
-        GameObject parent = new GameObject();
+        parent = new GameObject();
         parent.name = "Cards";
 
         // for each Sprite in front sprites that were gonna use in the game
@@ -233,8 +235,9 @@ public class Game : MonoBehaviour
         {
             if (status == GameStatus.match_found)
             {
-                selectedCards[0].SetActive(false);
-                selectedCards[1].SetActive(false);
+                // if match
+                selectedCards[0].GetComponent<Card>().CardFound();
+                selectedCards[1].GetComponent<Card>().CardFound();
 
                 foundPairs += 1;
 
@@ -246,6 +249,7 @@ public class Game : MonoBehaviour
             } 
             else if (status == GameStatus.no_match_found)
             {
+                // if not a pair rotate back
                 selectedCards[0].GetComponent<Card>().TurnToBack();
                 selectedCards[1].GetComponent<Card>().TurnToBack();
             }
@@ -259,13 +263,16 @@ public class Game : MonoBehaviour
 
     public bool AllowedToSelectCard(Card card)
     {
+        // check if first card is not yet selected
         if (selectedCards[0] == null)
         {
             return true;
         }
 
+        // check if second card is not yet selected
         if (selectedCards[1] == null)
         {
+            // check if card isnt the first card
             if (selectedCards[0] != card.gameObject)
             {
                 return true;
@@ -277,6 +284,8 @@ public class Game : MonoBehaviour
 
     private void Restart()
     {
+        Destroy(parent);
+
         MakeCards();
         DistributeCards();
 
